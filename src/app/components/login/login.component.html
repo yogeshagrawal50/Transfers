@@ -1,0 +1,41 @@
+<div class="row">
+  
+        <div class="col-6 login-col-1">
+            <img src="https://cdn.pixabay.com/photo/2018/09/17/23/16/travel-3685042__340.png" alt="">
+        </div>
+
+    <div class="col-6 login-col-2">
+        <div class="container mt-5">
+            <input type="checkbox" id="check">
+            <div class="login form">
+                <header>Login</header>
+                <form action="#" #loginForm="ngForm">
+                    <input type="email" ngModel name="email" placeholder="Enter your email" >
+                    <input type="password" ngModel name="password" placeholder="Enter your password">
+                    <a href="#">Forgot password?</a>
+                    <input type="button" class="button"  (click)="login(loginForm)" value="Login">
+                </form>
+                <div class="signup">
+                    <span class="signup">Don't have an account?
+                        <label for="check"  >Signup</label>
+                    </span>
+                </div>
+            </div>
+            <div class="registration form">
+                <header>Signup</header>
+                <form action="#" #signupForm="ngForm">
+                    <input type="emai" ngModel name="email" placeholder="Enter your email">
+                    <input type="password" ngModel name="password" placeholder="Create a password">
+                    <input type="password" required ngModel name="confirm_password" placeholder="Confirm your password">
+                    <input type="button" (click)="signup(signupForm)"class="button" value="Signup">
+                </form>
+                <div class="signup">
+                    <span class="signup">Already have an account?
+                        <label for="check">Login</label>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
