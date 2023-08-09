@@ -27,7 +27,7 @@
                     <input type="emai" ngModel name="email" placeholder="Enter your email">
                     <input type="password" ngModel name="password" placeholder="Create a password">
                     <input type="password" required ngModel name="confirm_password" placeholder="Confirm your password">
-                    <input type="button" (click)="signup(signupForm)"class="button" value="Signup">
+                    <input type="button" [disabled]="signupForm.status=='INVALID'" (click)="signup(signupForm)"class="button" value="Signup">
                 </form>
                 <div class="signup">
                     <span class="signup">Already have an account?

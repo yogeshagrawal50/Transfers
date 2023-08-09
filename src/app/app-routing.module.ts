@@ -8,15 +8,17 @@ import { PassengerInfoComponent } from './components/passenger-info/passenger-in
 import { JourneySummaryComponent } from './components/journey-summary/journey-summary.component';
 import { ViewTicketComponent } from './components/view-ticket/view-ticket.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: LoginComponent},
   {path:'login', component: LoginComponent},
-  {path:'availablebuses',component: AvailableBusesComponent},
-  {path:'buses/:id',component: SelectedSeatsComponent},
-  {path:'passengerInfo', component: PassengerInfoComponent},
-  {path: 'journeyDetails/:id', component: JourneySummaryComponent},
-  {path: 'viewticket/:id', component: ViewTicketComponent},
+  {path: 'home', component: HomeComponent,canActivate: [AuthGuard]},
+  {path:'availablebuses',component: AvailableBusesComponent, canActivate: [AuthGuard]},
+  {path:'buses/:id',component: SelectedSeatsComponent, canActivate: [AuthGuard]},
+  {path:'passengerInfo', component: PassengerInfoComponent, canActivate: [AuthGuard]},
+  {path: 'journeyDetails/:id', component: JourneySummaryComponent, canActivate: [AuthGuard]},
+  {path: 'viewticket/:id', component: ViewTicketComponent, canActivate: [AuthGuard]},
   {path: 'notfound', component: NotFoundComponent},
   {path: '**', component: NotFoundComponent}
 ];

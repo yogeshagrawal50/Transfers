@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,8 +10,11 @@ export class HeaderComponent implements OnInit {
 
   constructor(private auth : AuthService) { }
   isloggedin : Boolean = false;
+  @Input()username:string
   ngOnInit(): void {
-    this.isloggedin = this.auth.loggedIn
+    this.auth.isAuthenticated()
+     console.log(this.isloggedin)
   }
+  
 
 }

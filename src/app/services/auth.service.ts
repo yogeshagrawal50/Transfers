@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  loggedIn:Boolean = false;
+  loggedIn:boolean = false;
   username:String = ''
   constructor(private http:HttpClient) { }
+  @Output() userLoggedIn: EventEmitter<boolean> = new EventEmitter<boolean>(); 
 
   login(){
     this.loggedIn = true;
@@ -17,6 +18,7 @@ export class AuthService {
     this.loggedIn = false;
   }
   isAuthenticated(){
+    this.userLoggedIn.emit(this.loggedIn)
     return this.loggedIn;
   }
   signUp(email, password){

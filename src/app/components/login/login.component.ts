@@ -20,9 +20,11 @@ export class LoginComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
     const cnfpassword = form.value.confirm_password;
-    if (password === cnfpassword && form.valid) {
+    if (password === cnfpassword && form.valid && form.status == "VALID") {
       this.auth.signUp(email, password).subscribe(res => {
-        this.route.navigate([''])
+        this.auth.login()
+        this.auth.isAuthenticated()
+        this.route.navigate(['/home'])
       })
     }
   }
@@ -32,7 +34,9 @@ export class LoginComponent implements OnInit {
     const password = form.value.password;
     if (form.status == "VALID") {
       this.auth.onLogin(email, password).subscribe(res => {
-        this.route.navigate([''])
+        this.auth.login()
+        this.auth.isAuthenticated()
+        this.route.navigate(['/home'])
       })
     }
   }
